@@ -1,13 +1,31 @@
+/*------------------------------------------------------------------
+Website Name: BisLink
+Version: 2.0
+Author: Temitope David Olajide
+-------------------------------------------------------------------*/
+/* ==============================================================
+   GLOBAL STYLES
+   ============================================================== */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  background: #ffffff;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+html {
+  min-height: 100%;
+  position: relative;
+}
+.input-wrapper input::placeholder {
+  color: rgb(196, 168, 168);
+}
+.input-wrapper input[type="text"] {
+  background: transparent;
+  border: none;
+  border: 1px solid #ffff;
+  outline: none;
+  border-radius: 0;
+  color: #ffffff;
+}
+.hide-element {
+  visibility: hidden;
 }
