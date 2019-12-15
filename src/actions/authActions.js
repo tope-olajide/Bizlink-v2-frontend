@@ -16,7 +16,6 @@ export function signUp(userData) {
     axios.post(`${url}signup`, userData).then(response => {
       const { token } = response.data;
       localStorage.setItem("token", token);
-      axios.defaults.headers.common.authorization = token;
       dispatch(
         setCurrentUser(jsonwebtoken.decode(localStorage.getItem("token")))
       );
@@ -27,10 +26,16 @@ export function signIn(userData) {
     axios.post(`${url}signin`, userData).then(response => {
       const { token } = response.data;
       localStorage.setItem("token", token);
-      axios.defaults.headers.common.authorization = token;
       dispatch(
         setCurrentUser(jsonwebtoken.decode(localStorage.getItem("token")))
       );
     });
 }
 
+export function signOut() {
+  return (dispatch) => {
+    localStorage.removeItem('token');
+    dispatch(setCurrentUser({}));
+    window.location = '/auth';
+  };
+}
