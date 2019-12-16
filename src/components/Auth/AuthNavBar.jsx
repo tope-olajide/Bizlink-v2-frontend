@@ -144,7 +144,8 @@ export class AuthNavBar extends Component {
             toggle={() => this.toggle(6)}
             side
             position="top-right"
-          ><MDBModalHeader toggle={() => this.toggle(6)}>Signin to you Acount</MDBModalHeader>
+          >
+          <MDBModalHeader toggle={() => this.toggle(6)}>Signin to you Acount</MDBModalHeader>
             <MDBModalBody>
               <MDBContainer>
                 <Row>
