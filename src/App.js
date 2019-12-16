@@ -28,6 +28,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import AuthPage from "./components/Auth/index";
+import BusinessList from "./components/BusinessList"
+import withAuthorization from "./utils/withAuthorization";
 
 library.add(
   faHome,
@@ -59,6 +61,8 @@ class App extends Component {
     return (
       <>
           <Route exact path="/auth" component={AuthPage} />
+          <Route exact path="/" component={withAuthorization(BusinessList)}/>
+          
       </>
     );
   }
