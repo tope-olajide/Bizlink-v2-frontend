@@ -15,17 +15,237 @@ html {
   min-height: 100%;
   position: relative;
 }
-.input-wrapper input::placeholder {
-  color: rgb(196, 168, 168);
+
+.loader {
+  width:70%;
 }
-.input-wrapper input[type="text"] {
-  background: transparent;
-  border: none;
-  border: 1px solid #ffff;
-  outline: none;
+.loading-container{
+margin: 0;
+position: absolute;
+top: 50%;
+left: 56%;
+transform: translate(-50%, -50%);
+}
+
+/* ==============================================================
+     CATALOGUE COMPONENT STYLES
+     ============================================================== */
+     .biz-header {
+      background-image: linear-gradient(
+          to right bottom,
+          rgba(73, 78, 80, 0.8),
+          rgba(35, 44, 54, 0.7)
+        ),
+        url("images/Lagos-skyline.jpg");
+      background-size: cover;
+      background-position: top;
+      position: relative;
+      background-clip: padding-box;
+      background-color: #f4f9ff;
+    }
+    
+    .hero-caption {
+      width: 100%;
+      padding-bottom: 9%;
+    }
+    .hero-title {
+      padding-top: 9%;
+      text-align: center;
+      color: white;
+      font-size: 5em;
+      font-weight: 300;
+      width: 98%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-paragraph {
+      text-align: center;
+      color: white;
+      font-size: 30px;
+      margin-top: 15px;
+      margin-bottom: 30px;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-search-container {
+display: flex;
+width: 100%;
+justify-content: center;
+    }
+    @media screen and (max-width: 780px) {
+      .hero-search-container {
+flex-direction: column;
+align-items: center;
+      }
+    }
+    .input-wrapper input::placeholder {
+      color: rgb(196, 168, 168);
+    }
+    .input-wrapper input[type="text"] {
+      background: transparent;
+      border: none;
+      border: 1px solid #ffff;
+      outline: none;
+      border-radius: 0;
+      color: #ffffff;
+      width: 300px;
+      margin: 10px;
+    }
+    .input-wrapper {
+      margin-bottom: 15px;
+    }
+
+    .browse-by,
+    .browse-by a {
+      text-align: center;
+      color: rgb(182, 229, 229);
+      font-size: 22px;
+      margin-top: 30px;
+      font-weight: 300;
+    }
+    .browse-by :hover {
+      color: rgb(153, 144, 144);
+      text-decoration: underline;
+    }
+    .featured-text {
+      font-size: 2.9em;
+    }
+    .category,
+    .biz-address {
+      text-transform: capitalize;
+    }
+    /* ==============================================================
+   BUSINESS CARD STYLES
+   ============================================================== */
+.card-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.biz-name {
+  margin-bottom: 3px;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: rgb(97, 83, 83);
+  text-transform: capitalize;
+}
+.card-body ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card-body ul li {
+  margin-top: 9px;
+}
+
+.card-bottom {
+  margin-top: 8px;
+}
+
+.card-contents p {
+  display: inline;
+  font-size: 15px;
+  font-weight: 400;
+  color: #2bbbad;
+}
+
+.card-bottom .view-icon {
+  float: right;
+  margin: 0 20px;
+  color: #2bbbad;
+}
+
+.card-bottom .trash-icon {
+  float: right;
+}
+
+.card-bottom .edit-icon {
+  float: right;
+  margin: 0 20px;
+}
+
+.card p {
+  display: inline;
+  font-size: 15px;
+  font-weight: 400;
+  color: #2bbbad;
+}
+
+.card-bottom p {
+  color: rgb(247, 4, 4);
+  text-transform: uppercase;
+  font-size: 13px;
+  cursor: pointer;
+}
+.space-text {
+  margin-right: 10px;
+}
+.card-icon {
+  color: #2bbbad;
+}
+.card {
   border-radius: 0;
+}
+.nav-menu{
   color: #ffffff;
+  display: inline;
+  padding: 10px 15px 5px 15px;
 }
-.hide-element {
-  visibility: hidden;
+.nav-menu:hover{
+  color: rgb(255, 255, 255,0.6);
 }
+.activeRoute{
+  color: #ffffff;
+  display: inline;
+
+  background-color: rgb(255, 255, 255, 0.05);
+
+}
+    /* ==============================================================
+         ERROR PAGE STYLES
+         ============================================================== */
+    .error-container {
+      width: 80%;
+      margin: 0 auto;
+    }
+    .error-image {
+      width: 90%;
+    }
+/* ==============================================================
+   FOOTER STYLES
+   ============================================================== */
+   .footer-search-form {
+    margin-top: 50px;
+    margin-left: 50px;
+  }
+  
+  .copyright-content {
+    margin-top: 70px;
+    float: right;
+    margin-right: 0px;
+  }
+  
+  .footer {
+    margin-top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #ffffff;
+  }
+  @media screen and (max-width: 768px) {
+    .footer-search-form {
+      margin-top: 50px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 78%;
+    }
+  
+    .copyright-content {
+      width: 85%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
