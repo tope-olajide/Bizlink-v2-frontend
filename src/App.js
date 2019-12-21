@@ -30,6 +30,9 @@ import {
 import AuthPage from "./components/Auth/index";
 import BusinessList from "./components/BusinessList"
 import withAuthorization from "./utils/withAuthorization";
+import ImageUpload from "./components/Image/index"
+import PictureGallery from "./components/Image/PictureGallery"
+
 
 library.add(
   faHome,
