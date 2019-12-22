@@ -1,6 +1,6 @@
 import axios from "axios";
 import {
- FETCH_ALL_BUSINESSES,
+ FETCH_ALL_BUSINESSES, ADD_BUSINESS,
 } from "../actions/type";
 const url = "http://127.0.0.1:5000/api/business";
 const token = localStorage.getItem("token");
@@ -19,6 +19,16 @@ export function fetchBusinesses(page, limit) {
       dispatch({
         type: FETCH_ALL_BUSINESSES,
         pagedBusiness
+      });
+    });
+}
+export function addBusiness(businessData) {
+  return dispatch =>
+    axios.post(`${url}`, businessData).then(response => {
+      const { business } = response.data;
+      dispatch({
+        type: ADD_BUSINESS,
+        business
       });
     });
 }
