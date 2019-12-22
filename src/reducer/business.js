@@ -1,9 +1,8 @@
 import {
-    FETCH_ALL_BUSINESSES,
+    FETCH_ALL_BUSINESSES,ADD_BUSINESS
   } from '../actions/type'
   const initialState = {
-    allBusinesses: {
-    }
+    allBusinesses: {}
 }
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -12,6 +11,13 @@ export default (state = initialState, action) => {
           ...state,
           allBusinesses: action.pagedBusiness
         };
+        case ADD_BUSINESS:
+          return {
+            ...state,
+            allBusinesses: {
+              ...state.allBusinesses, allBusinesses: action.pagedBusiness
+            },
+          };
         default:
             return state;
         }
