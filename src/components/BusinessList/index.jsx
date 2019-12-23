@@ -136,6 +136,7 @@ class BusinessList extends Component {
   }
 }
 const mapStateToProps = state => {
+  console.log(state.business.allBusinesses)
   return {
     allBusinesses: state.business.allBusinesses.businesses,
     totalPages: state.business.allBusinesses.totalPages
