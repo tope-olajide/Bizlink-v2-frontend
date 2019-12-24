@@ -26,13 +26,13 @@ import {
   faSignOutAlt,
   faUserAlt
 } from "@fortawesome/free-solid-svg-icons";
-
+import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
+import { faEye as faEyeRegular } from "@fortawesome/free-regular-svg-icons";
 import AuthPage from "./components/Auth/index";
 import BusinessList from "./components/BusinessList"
 import withAuthorization from "./utils/withAuthorization";
 import AddBusiness from "./components/RegisterBusiness";
-
-
+import BusinessDetails from "./components/BusinessDetails";
 library.add(
   faHome,
   faBriefcase,
@@ -48,9 +48,11 @@ library.add(
   faMapMarkerAlt,
   faMobileAlt,
   faHeart,
+  faHeartRegular,
   faThumbsDown,
   faThumbsUp,
   faEye,
+  faEyeRegular,
   faTag,
   faTrash,
   faEdit,
@@ -68,6 +70,10 @@ class App extends Component {
             exact
             path="/register-business"
             component={withAuthorization(AddBusiness)}
+          />
+          <Route
+            path="/business-details/:businessId"
+            component={withAuthorization(BusinessDetails)}
           />
       </>
     );
