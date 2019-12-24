@@ -294,4 +294,39 @@ align-items: center;
     .hide-gallery-button {
       visibility: hidden;
     }
-    
+    /* ==============================================================
+     BUSINESS-DETAILS STYLES
+  ============================================================== */
+.review {
+  margin-left: 5px;
+}
+
+.cat-review {
+  margin-top: 0px;
+}
+.profile-text {
+  text-align: center;
+  line-height: 0px;
+  text-transform: capitalize;
+}
+.review-card {
+  margin-left: 0px;
+}
+.commenter-avatar img {
+  width: 60px;
+  margin: 0px auto auto;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+}
+.profile-section-biz-details img {
+  border-radius: 50%;
+  border: 6px solid white;
+  width: 160px;
+}
+.commenter-avatar {
+  text-align: center;
+}
+
+.space-nav {
+  margin-right: 30px;
+}
