@@ -99,8 +99,8 @@ class BusinessList extends Component {
                         businessName={business.businessName}
                         category={business.category}
                         reviewCount={business.reviewCount}
-                        businessAddress={business.businessAddress1}
-                        phoneNumber={business.phoneNumber1}
+                        businessAddress={business.businessAddress}
+                        phoneNumber={business.phoneNumber}
                         website={business.website}
                         image={business.defaultBusinessImageUrl}
                         viewCount={business.viewCount}
