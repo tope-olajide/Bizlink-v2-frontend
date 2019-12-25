@@ -54,7 +54,8 @@ class EditProfileForm extends Component {
         </div>
       </div>
     ));
-    return (
+    return (<>
+    <h1 className = "text-center my-5">Modfiy Your Profile</h1>
       <div className="card form__container-card col-md-6 p-4 my-3">
         <form>
           {/*  <h3 className="h3 text-center mt-4 mb-4">Edit Profile</h3> */}
@@ -77,7 +78,7 @@ class EditProfileForm extends Component {
           <div className="grey-text">
             <Input
               label="Fullname"
-              value={this.props.defaultFullname}
+              valueDefault={this.props.defaultFullname}
               type="text"
               onChange={event => {
                 this.props.handleInputChange("fullname", event.target.value);
@@ -85,14 +86,14 @@ class EditProfileForm extends Component {
             />
             <Input
               label="Email Address"
-              value={this.props.defaultEmail}
+              valueDefault={this.props.defaultEmail}
               onChange={event => {
                 this.props.handleInputChange("email", event.target.value);
               }}
             />
             <Input
               label="Phone Number"
-              value={this.props.defaultPhoneNumber}
+              valueDefault={this.props.defaultPhoneNumber}
               group
               type="text"
               onChange={event => {
@@ -101,7 +102,7 @@ class EditProfileForm extends Component {
             />
             <Input
               label="Location"
-              value={this.props.defaultLocation}
+              valueDefault={this.props.defaultLocation}
               group
               type="text"
               onChange={event => {
@@ -110,7 +111,7 @@ class EditProfileForm extends Component {
             />
             <Input
               type="textarea"
-              value={this.props.defaultDesription}
+              valueDefault={this.props.defaultDesription}
               label="About Me"
               rows="3"
               onChange={event => {
@@ -125,6 +126,7 @@ class EditProfileForm extends Component {
           </div>
         </form>
       </div>
+      </>
     );
   }
 }

@@ -20,8 +20,8 @@ class ModifyUser extends Component {
       phoneNumber: "",
       files: [],
       profile: [],
-      ImageUrl: "",
-      ImageId: "",
+      imageUrl: "",
+      imageId: "",
       isLoading: true
     };
     this.onDrop = this.onDrop.bind(this);
@@ -76,8 +76,9 @@ class ModifyUser extends Component {
   }
 
   handleFormSubmit = () => {
-    alert("Loading....");
-    // start loading animation
+    toast.info(`saving...`, {
+      position: "bottom-left"
+    });
     // Push all the axios request promise into a single array
 
     const file = this.state.profile[0];
@@ -91,31 +92,43 @@ class ModifyUser extends Component {
       formData.append("timestamp", (Date.now() / 1000) | 0);
 
       // Make an AJAX upload request using Axios
-      return axios
-        .post(
-          "https://api.cloudinary.com/v1_1/temitope/image/upload",
-          formData,
-          {
-            headers: { "X-Requested-With": "XMLHttpRequest" }
+      return axios({
+        method: "post",
+        url: "https://api.cloudinary.com/v1_1/temitope/image/upload",
+        data: formData,
+        headers: { "X-Requested-With": "XMLHttpRequest" },
+        transformRequest: [
+          (data, headers) => {
+            delete headers.authorization;
+            delete headers.common.authorization;
+            console.log(headers)
+            return data;
           }
-        )
+        ]
+      })
         .then(response => {
           const data = response.data;
           this.setState({
-            ImageUrl: data.secure_url,
-            ImageId: data.public_id
+            imageUrl: data.secure_url,
+            imageId: data.public_id
           });
           this.props
             .dispatch(updateProfile(this.state))
             .then(() => {
-              alert("saved to database successfully");
+              toast.success("saved to database successfully", {
+                position: "bottom-left"
+              });
             })
             .catch(function(err) {
-              alert("error " + err);
+              toast.error(`${err}`, {
+                position: "bottom-left"
+              })
             });
         })
         .catch(function(err) {
-          alert("error " + err);
+          toast.error(`${err}`, {
+            position: "bottom-left"
+          })
         });
     }
     // Once all the files are uploaded
@@ -126,10 +139,14 @@ class ModifyUser extends Component {
           updateProfile({ fullname, email, about, location, phoneNumber })
         )
         .then(() => {
-          alert("saved to database successfully without pictures");
+          toast.success(`saved to database successfully `, {
+            position: "bottom-left"
+          });
         })
         .catch(function(err) {
-          alert("else error " + err);
+          toast.error(`${err}`, {
+            position: "bottom-left"
+          })
         });
     }
   };
