@@ -13,7 +13,6 @@ import { signIn, signUp } from "../../actions/authActions";
 import { validateUser } from "../../utils/validator";
 import SignInForm from './SignInForm'
 import SignUpForm from './SignUpForm'
-import PropTypes from 'prop-types';
 import "react-toastify/dist/ReactToastify.css";
 export class AuthNavBar extends Component {
   constructor(props) {

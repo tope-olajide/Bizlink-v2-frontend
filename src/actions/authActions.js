@@ -33,9 +33,7 @@ export function signIn(userData) {
 export function updateProfile(userData) {
   return dispatch =>
     axios.put(`${url}profile`, userData).then(response => {
-      const {
-        user: { token }
-      } = response.data;
+      const { token } = response.data;
       localStorage.setItem("token", token);
       dispatch(setCurrentUser(jsonwebtoken.decode(token)));
     });
