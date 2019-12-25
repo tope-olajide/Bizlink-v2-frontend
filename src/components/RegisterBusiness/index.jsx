@@ -96,7 +96,7 @@ class BusinessList extends Component {
               { imageUrl: secure_url, imageId: public_id }
             ]
           }));
-          toast.info(`${file} uploaded successfully!`, {
+          toast.success(`${file} uploaded successfully!`, {
             position: "bottom-left"
           });
         }

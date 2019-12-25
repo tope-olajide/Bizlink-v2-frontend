@@ -23,6 +23,9 @@ class BusinessImageGallery extends Component {
       };
     };
     const imageGalleryUrl = this.props.businessImageUrl.map(businessImage => {
+      if(!businessImage){
+        return addTransformationToUrl("https://res.cloudinary.com/temitope/image/upload/v1549260007/noimage_1.png");
+      }
       return addTransformationToUrl(businessImage.imageUrl);
     });
     const images = imageGalleryUrl;

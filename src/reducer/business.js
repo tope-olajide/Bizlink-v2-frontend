@@ -53,10 +53,10 @@ export default (state = initialState, action) => {
         ...state,
         businessDetails: {
           ...state.businessDetails,
-          infoCount: {
-            ...state.businessDetails.infoCount,
+          otherInfo: {
+            ...state.businessDetails.otherInfo,
             isFollowing: action.isFollowing,
-            followersCount: state.businessDetails.infoCount.followersCount + 1
+            followersCount: state.businessDetails.otherInfo.followersCount + 1
           }
         }
       };
@@ -65,10 +65,10 @@ export default (state = initialState, action) => {
         ...state,
         businessDetails: {
           ...state.businessDetails,
-          infoCount: {
-            ...state.businessDetails.infoCount,
+          otherInfo: {
+            ...state.businessDetails.otherInfo,
             isFollowing: action.isFollowing,
-            followersCount: state.businessDetails.infoCount.followersCount - 1
+            followersCount: state.businessDetails.otherInfo.followersCount - 1
           }
         }
       };
@@ -77,8 +77,8 @@ export default (state = initialState, action) => {
         ...state,
         businessDetails: {
           ...state.businessDetails,
-          infoCount: {
-            ...state.businessDetails.infoCount,
+          otherInfo: {
+            ...state.businessDetails.otherInfo,
             isUserFavourite: action.isFavourite
           }
         }
@@ -88,8 +88,8 @@ export default (state = initialState, action) => {
         ...state,
         businessDetails: {
           ...state.businessDetails,
-          infoCount: {
-            ...state.businessDetails.infoCount,
+          otherInfo: {
+            ...state.businessDetails.otherInfo,
             isUserFavourite: action.isFavourite
           }
         }
