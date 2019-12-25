@@ -3,6 +3,7 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import { Button } from "mdbreact";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { NavLink as Link } from 'react-router-dom';
 
 class BusinessImageGallery extends Component {
   render() {
@@ -76,13 +77,14 @@ class BusinessImageGallery extends Component {
               <Button disabled={!this.props.isBusinessOwner}>
                 <FontAwesomeIcon icon="trash" size="2x" />
               </Button>
+              <Link to={`/modify-business/${this.props.id}`}>
               <Button
                 disabled={!this.props.isBusinessOwner}
                 onClick={this.props.editBusiness}
                 className="edit-business-button"
               >
                 <FontAwesomeIcon icon="edit" size="2x" />
-              </Button>
+              </Button></Link>
             </div>
           </div>
         </div>

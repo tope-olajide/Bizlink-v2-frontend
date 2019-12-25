@@ -83,6 +83,7 @@ class BusinessList extends Component {
             transformRequest: [
               (data, headers) => {
                 delete headers.authorization;
+                delete headers.common.authorization;
                 console.log(headers)
                 return data;
               }

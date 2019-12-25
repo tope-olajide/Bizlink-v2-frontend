@@ -35,6 +35,7 @@ import AddBusiness from "./components/RegisterBusiness";
 import BusinessDetails from "./components/BusinessDetails";
 import Profile from "./components/Profile";
 import ModifyUser from "./components/ModifyUser";
+import ModifyBusiness from "./components/ModifyBusiness";
 library.add(
   faHome,
   faBriefcase,
@@ -85,6 +86,10 @@ class App extends Component {
           <Route
             path="/modify-user"
             component={withAuthorization(ModifyUser)}
+          />
+           <Route
+            path="/modify-business/:businessId"
+            component={withAuthorization(ModifyBusiness)}
           />
       </>
     );

@@ -1,6 +1,6 @@
 import axios from "axios";
 import {
- FETCH_ALL_BUSINESSES, ADD_BUSINESS, SET_BUSINESS_DETAILS, FETCH_BUSINESS_REVIEWS, ADD_BUSINESS_REVIEW
+ FETCH_ALL_BUSINESSES, ADD_BUSINESS, SET_BUSINESS_DETAILS, FETCH_BUSINESS_REVIEWS, ADD_BUSINESS_REVIEW, MODIFY_BUSINESS
 } from "../actions/type";
 const url = "http://127.0.0.1:5000/api/business";
 const token = localStorage.getItem("token");
@@ -62,6 +62,16 @@ export function addBusinessReviews(businessId, userReview) {
       dispatch({
         type: ADD_BUSINESS_REVIEW,
         reviews
+      });
+    });
+}
+export function modifyBusiness(businessData, businessId) {
+  return dispatch =>
+    axios.put(`${url}/${businessId}`, businessData).then(response => {
+      const { business } = response.data;
+      dispatch({
+        type: MODIFY_BUSINESS,
+        business
       });
     });
 }
