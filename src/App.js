@@ -34,6 +34,7 @@ import withAuthorization from "./utils/withAuthorization";
 import AddBusiness from "./components/RegisterBusiness";
 import BusinessDetails from "./components/BusinessDetails";
 import Profile from "./components/Profile";
+import ModifyUser from "./components/ModifyUser";
 library.add(
   faHome,
   faBriefcase,
@@ -80,6 +81,10 @@ class App extends Component {
             exact
             path="/view-profile"
             component={withAuthorization(Profile)}
+          />
+          <Route
+            path="/modify-user"
+            component={withAuthorization(ModifyUser)}
           />
       </>
     );
