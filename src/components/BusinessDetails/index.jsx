@@ -17,7 +17,7 @@ import LoadingAnimation from "../commons/LoadingAnimation";
 import { ToastContainer, toast } from "react-toastify";
 import { connect } from "react-redux";
 import NavigationBar from "../commons/NavigationBar";
-import ErrorPage from "../commons/ErrorPage";
+import ErrorPage from "../commons/ErrorPage";  
 export class BusinessDetails extends Component {
   constructor(props) {
     super(props);
@@ -270,7 +270,7 @@ export class BusinessDetails extends Component {
   };
   editBusiness = () => {
     const id = this.props.match.params.businessId;
-    window.location = `/modify-business/${id}`;
+    window.location = `/modify-business/${id}`; 
   };
   fetchImageGallery = () => {
     if (this.props.otherInfo.businessPictures.length ) {
@@ -320,6 +320,7 @@ export class BusinessDetails extends Component {
           editBusiness={this.editBusiness}
           businessImageUrl={this.fetchImageGallery()}
           scrollToReview={this.scrollToReview}
+          id = {this.props.match.params.businessId}
         />
         <BusinessDetailsPage
           saveToState={this.saveToState}
