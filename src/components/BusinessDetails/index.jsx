@@ -273,7 +273,8 @@ export class BusinessDetails extends Component {
     window.location = `/modify-business/${id}`;
   };
   fetchImageGallery = () => {
-    if (this.props.otherInfo.businessPictures.length) {
+    if (this.props.otherInfo.businessPictures.length ) {
+      console.log(this.props.otherInfo.businessPictures )
       const imageGallery = this.props.otherInfo.businessPictures
       return imageGallery;
     } else {
