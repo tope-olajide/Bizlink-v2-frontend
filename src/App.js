@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, BrowserRouter, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faHome,
@@ -33,6 +33,7 @@ import BusinessList from "./components/BusinessList"
 import withAuthorization from "./utils/withAuthorization";
 import AddBusiness from "./components/RegisterBusiness";
 import BusinessDetails from "./components/BusinessDetails";
+import Profile from "./components/Profile";
 library.add(
   faHome,
   faBriefcase,
@@ -74,6 +75,11 @@ class App extends Component {
           <Route
             path="/business-details/:businessId"
             component={withAuthorization(BusinessDetails)}
+          />
+          <Route
+            exact
+            path="/view-profile"
+            component={withAuthorization(Profile)}
           />
       </>
     );
