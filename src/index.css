@@ -410,3 +410,10 @@ align-items: center;
         margin: auto auto;
         text-align: center;
       }
+/* ==============================================================
+     EDIT-PROFILE STYLES
+     ============================================================== */
+     .form__container-card {
+      margin-left: auto;
+      margin-right: auto;
+    }
