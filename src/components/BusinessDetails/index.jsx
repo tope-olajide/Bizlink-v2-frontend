@@ -272,12 +272,10 @@ export class BusinessDetails extends Component {
     const id = this.props.match.params.businessId;
     window.location = `/modify-business/${id}`;
   };
-  parseImageGallery = () => {
-    if (this.props.businessDetails.businessImageUrl) {
-      const parsedGallery = JSON.parse(
-        this.props.businessDetails.businessImageUrl
-      );
-      return parsedGallery;
+  fetchImageGallery = () => {
+    if (this.props.otherInfo.businessPictures.length) {
+      const imageGallery = this.props.otherInfo.businessPictures
+      return imageGallery;
     } else {
       return [
         {
@@ -319,7 +317,7 @@ export class BusinessDetails extends Component {
           upvoteBusiness={this.upvoteBusiness}
           downvoteBusiness={this.downvoteBusiness}
           editBusiness={this.editBusiness}
-          businessImageUrl={this.parseImageGallery()}
+          businessImageUrl={this.fetchImageGallery()}
           scrollToReview={this.scrollToReview}
         />
         <BusinessDetailsPage
