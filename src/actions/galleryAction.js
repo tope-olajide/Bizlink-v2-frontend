@@ -11,7 +11,7 @@ export function setDefaultImage(businessId, businessImageUrl) {
   return dispatch =>
     axios
       .put(
-        `${url}/${businessId}/galleries?businessImageUrl=${businessImageUrl}`
+        `${url}/${businessId}/gallery?businessImageUrl=${businessImageUrl}`
       )
       .then(response => {
         const { defaultBusinessImage } = response.data;
@@ -23,7 +23,7 @@ export function setDefaultImage(businessId, businessImageUrl) {
 }
 export function fetchPictures(businessId) {
   return dispatch =>
-    axios.get(`${url}/${businessId}/galleries`).then(response => {
+    axios.get(`${url}/${businessId}/gallery`).then(response => {
       const { businessPictures } = response.data;
       dispatch({
         type: FETCH_GALLERIES,
@@ -35,7 +35,7 @@ export function deletePicture(businessImageId) {
   return dispatch =>
     axios
       .delete(
-        `${url}/${businessImageId}/galleries`
+        `${url}/${businessImageId}/gallery`
       )
       .then(response => {
         const { businessPictures } = response.data;
