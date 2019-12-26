@@ -121,13 +121,12 @@ export class AuthNavBar extends Component {
   render() {
     return (
       <>
-        <MDBNavbar color="indigo" dark expand="md" scrolling>
+        <MDBNavbar color="black" dark expand="md" scrolling>
         <Link to="/">
             <h5 className="white-text">BISLINK</h5></Link>
           <MDBNavbarToggler onClick={this.onClick} />
           <MDBCollapse isOpen={this.state.collapse} navbar>
             <MDBNavbarNav right>
-              
                 <Link to="#" onClick={() => this.toggle(7)}>
                   <FontAwesomeIcon  className="white-text" icon="user-plus" /> <h6 className="white-text d-inline mr-4">SIGN UP</h6>
                 </Link>
