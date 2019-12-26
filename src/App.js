@@ -36,6 +36,7 @@ import BusinessDetails from "./components/BusinessDetails";
 import Profile from "./components/Profile";
 import ModifyUser from "./components/ModifyUser";
 import ModifyBusiness from "./components/ModifyBusiness";
+import ModifyGallery from "./components/ModifyGallery";
 library.add(
   faHome,
   faBriefcase,
@@ -90,6 +91,11 @@ class App extends Component {
            <Route
             path="/modify-business/:businessId"
             component={withAuthorization(ModifyBusiness)}
+          />
+          <Route
+            exact
+            path="/modify-gallery/:businessId"
+            component={withAuthorization(ModifyGallery)}
           />
       </>
     );
