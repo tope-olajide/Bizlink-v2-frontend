@@ -56,7 +56,6 @@ class ModifyGallery extends Component {
             });
           })
           .catch(error => {
-            alert(error)
             if(!error.response){ toast.error('Network Error', {
               position: "bottom-left"
             });
@@ -71,10 +70,20 @@ class ModifyGallery extends Component {
       deleteBusinessPicture = (id) => {
         this.props
           .dispatch(deletePicture(id))
-          .then(() => { alert('success')
+          .then(() => { toast.success('Image Deleted!', {
+            position: "bottom-left"
+          });
           })
           .catch(error => {
-          alert(error)
+            if(!error.response){ toast.error('Network Error', {
+              position: "bottom-left"
+            });
+          }
+          else {
+            toast.error(error.response.data.message, {
+              position: "bottom-left"
+            });
+          }
           });
       };
 
