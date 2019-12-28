@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faHome,
@@ -37,6 +37,11 @@ import Profile from "./components/Profile";
 import ModifyUser from "./components/ModifyUser";
 import ModifyBusiness from "./components/ModifyBusiness";
 import ModifyGallery from "./components/ModifyGallery";
+import Notifications from "./components/Notifications";
+import AllNotifications from "./components/Notifications/AllNotifications";
+import NotificationDetails from "./components/Notifications/NotificationDetails";
+import SeenNotification from "./components/Notifications/ReadNotifications";
+
 library.add(
   faHome,
   faBriefcase,
@@ -67,36 +72,59 @@ library.add(
 class App extends Component {
   render() {
     return (
-      <>
-          <Route exact path="/auth" component={AuthPage} />
-          <Route exact path="/" component={withAuthorization(BusinessList)}/>
-          <Route
-            exact
-            path="/register-business"
-            component={withAuthorization(AddBusiness)}
-          />
-          <Route
-            path="/business-details/:businessId"
-            component={withAuthorization(BusinessDetails)}
-          />
-          <Route
-            exact
-            path="/view-profile"
-            component={withAuthorization(Profile)}
-          />
-          <Route
-            path="/modify-user"
-            component={withAuthorization(ModifyUser)}
-          />
-           <Route
-            path="/modify-business/:businessId"
-            component={withAuthorization(ModifyBusiness)}
-          />
-          <Route
-            exact
-            path="/modify-gallery/:businessId"
-            component={withAuthorization(ModifyGallery)}
-          />
+      <>   <Switch>
+      <Route exact path="/auth" component={AuthPage} />
+      <Route
+        exact
+        path="/register-business"
+        component={withAuthorization(AddBusiness)}
+      />
+      <Route exact path="/" component={withAuthorization(BusinessList)} />
+      <Route
+        path="/business-details/:businessId"
+        component={withAuthorization(BusinessDetails)}
+      />
+      <Route
+        exact
+        path="/view-profile"
+        component={withAuthorization(Profile)}
+      />
+      <Route
+        path="/modify-user"
+        component={withAuthorization(ModifyUser)}
+      />
+      <Route
+        path="/modify-business/:businessId"
+        component={withAuthorization(ModifyBusiness)}
+      />
+      <Route
+        exact
+        path="/notifications"
+        component={withAuthorization(Notifications)}
+      />
+      <Route
+        exact
+        path="/notifications/all"
+        component={withAuthorization(AllNotifications)}
+      />
+      <Route
+        exact
+        path="/notifications/seen"
+        component={withAuthorization(SeenNotification)}
+      />
+      <Route
+        exact
+        path="/notifications/:notificationId"
+        component={withAuthorization(NotificationDetails)}
+      />
+      <Route
+        exact
+        path="/modify-gallery/:businessId"
+        component={withAuthorization(ModifyGallery)}
+      />
+
+      />
+    </Switch>
       </>
     );
   }

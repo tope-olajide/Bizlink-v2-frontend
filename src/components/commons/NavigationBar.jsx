@@ -6,7 +6,6 @@ import {
   NavbarNav,
   NavbarToggler,
   Collapse,
-  NavItem,
   MDBContainer,
   MDBBtn,
   MDBModal,
@@ -15,6 +14,9 @@ import {
   MDBModalFooter
 } from "mdbreact";
 import { NavLink as Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import { signOut } from "../../actions/authActions";
+import { fetchNewNotificationsCount } from "../../actions/notificationAction";
 class NavigationBar extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,9 @@ class NavigationBar extends React.Component {
     };
     this.onClick = this.onClick.bind(this);
   }
- 
+  componentDidMount() {
+    this.getNewNotificationsCount()
+  }
   onClick() {
     this.setState({
       collapse: !this.state.collapse
@@ -53,7 +57,26 @@ class NavigationBar extends React.Component {
       modal: !this.state.modal
     });
   };
-
+  getNewNotificationsCount = () => {
+    this.setState({ isLoading: true });
+    this.props
+      .dispatch(fetchNewNotificationsCount())
+      .then(() => {
+        this.setState({
+          isLoading: false,
+          isError: false
+        });
+      })
+      .catch(error => {
+        this.setState({
+          isLoading: false,
+          isError: true
+        });
+      });
+  };
+  signOut = () => {
+    this.props.dispatch(signOut());
+  };
 
   render() {
     return (
@@ -97,7 +120,6 @@ class NavigationBar extends React.Component {
         </MDBContainer>
         <Navbar color="black" dark className="zindex" expand="lg" scrolling>
           <NavbarBrand> <Link to="/">
-            
               <FontAwesomeIcon icon="" size="1x" />
               <h4 className="white-text" >BISLINK</h4></Link>
           </NavbarBrand>
@@ -120,6 +142,20 @@ class NavigationBar extends React.Component {
                 <Link activeClassName="activeRoute" className="nav-menu" to="/view-profile">
                 <h6><FontAwesomeIcon icon="user-alt" /> MY PROFILE </h6>   
                 </Link>
+               
+                <Link activeClassName="activeRoute" className="nav-menu" to="/notifications">
+                   <div><FontAwesomeIcon icon="bell" /><p className="nav-notification-badge">
+                    {this.state.isLoading
+                      ? 0
+                      : this.state.isError
+                      ? 0
+                      : this.props.newNotificationsCount||0}
+                  </p>{" "}
+                  NOTIFICATIONS</div>
+                </Link>
+                <Link activeClassName="activeRoute" className="nav-menu" to="#?" onClick={this.signOut}>
+                  <FontAwesomeIcon icon="sign-out-alt" /> LOGOUT
+                </Link>
             </NavbarNav>
           </Collapse>
         </Navbar>
@@ -128,4 +164,11 @@ class NavigationBar extends React.Component {
   }
 }
 
-export default NavigationBar;
+const mapStateToProps = state => {
+  console.log(state.notifications.newNotificationsCount)
+  return {
+    newNotificationsCount:
+    state.notifications.newNotificationsCount
+  };
+};
+export default connect(mapStateToProps)(NavigationBar);
