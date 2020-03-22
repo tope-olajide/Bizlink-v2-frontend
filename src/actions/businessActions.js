@@ -75,3 +75,32 @@ export function modifyBusiness(businessData, businessId) {
       });
     });
 }
+
+export function businessSearch(name, location, page, limit) {
+  return dispatch =>
+    axios
+      .get(
+        `${url}/search?name=${name}&location=${location}&page=${page}&limit=${limit}`
+      )
+      .then(response => {
+        const { businesses, totalPages } = response.data;
+        const pagedBusiness = { businesses, totalPages };
+        dispatch({
+          type: FETCH_ALL_BUSINESSES,
+          pagedBusiness
+        });
+      });
+}
+export function sortBusinessBy(sort, page, limit) {
+  return dispatch =>
+    axios
+      .get(`${url}/search?sort=${sort}&page=${page}&limit=${limit}`)
+      .then(response => {
+        const { businesses, totalPages } = response.data;
+        const pagedBusiness = { businesses, totalPages };
+        dispatch({
+          type: FETCH_ALL_BUSINESSES,
+          pagedBusiness
+        });
+      });
+}
