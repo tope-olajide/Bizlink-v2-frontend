@@ -2,7 +2,7 @@ import {
   NEW_NOTIFICATIONS,
   NOTIFICATION_DETAILS,
   ALL_NOTIFICATIONS,
-  READ_NOTIFICATIONS,NEW_NOTIFICATIONS_COUNT,MARK_ALL_NOTIFICATIONS
+  READ_NOTIFICATIONS,NEW_NOTIFICATIONS_COUNT
 } from "../actions/type";
 const initialState = {
   allNotifications: {
@@ -10,7 +10,9 @@ const initialState = {
   },
   newNotificationsCount:0,
   unreadNotification: {
-    notifications: {}
+    unreadNotifications: [],
+    allNotificationsCount:0,
+    readNotificationsCount:0
   },
   readNotification: {
     notifications: {}
