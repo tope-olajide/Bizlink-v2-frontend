@@ -26,10 +26,8 @@ class Footer extends Component {
       <div ref={this.props.myRef} id="footer">
         <nav class=" footer bottom navbar-expand-sm navbar-dark bg-dark">
           <div className="container-fluid">
-            <div className="row mt-5">
-              <div className="col-md-4  footer-search-form">
-                <form>
-                  <p className="h5 text-center mb-4">Search for Businesses</p>
+            <div className=" footer-wrapper">
+                <form className="footer-search-form">
                   <div className="grey-text">
                     <Input
                       label="Business Name"
@@ -59,8 +57,6 @@ class Footer extends Component {
                     </Button>
                   </div>
                 </form>
-              </div>
-              <div className="col-md-7">
                 <div className=" copyright-content">
                   <p className=" d-inline font-weight-bold">
                     {" "}
@@ -76,13 +72,9 @@ class Footer extends Component {
                     {" "}
                     <a href="/view-profile">My Profile </a>
                   </p>
-                  <p className="dot-seperator d-inline">•</p>
+                  <p className="dot-seperator d-inline">• </p>
                   <p className=" d-inline font-weight-bold">
                     <a href="/notifications">Notifications</a>{" "}
-                  </p>
-                  <p className="dot-seperator d-inline">•</p>
-                  <p className=" d-inline font-weight-bold">
-                    {" "}
                   </p>
                   <p class="mt-5">
                     Designed and developed with <FontAwesomeIcon icon="heart" />{" "}
@@ -94,7 +86,6 @@ class Footer extends Component {
                     Copyright © 2019 BisLink. All rights reserved{" "}
                   </p>
                 </div>
-              </div>
             </div>
           </div>
         </nav>
