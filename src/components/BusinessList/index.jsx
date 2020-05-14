@@ -85,7 +85,7 @@ class BusinessList extends Component {
               <FontAwesomeIcon icon="briefcase" /> Featured Places
             </h1>
           </div>
-              {!this.props.allBusinesses.length ? (
+              {!this.props.allBusinesses ? (
                 <div>No Businesses Found!</div>
               ) : (<div className=" container card-container"> 
                 { this.props.allBusinesses.map(business => {
