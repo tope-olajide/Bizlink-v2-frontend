@@ -11,7 +11,6 @@
   "bugs": {
     "url": "https://github.com/tope-olajide/bizlink-v2-frontend/issues"
   },
-  "homepage": "https://github.com/tope-olajide/bizlink-v2-frontend#readme",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@fortawesome/free-brands-svg-icons": "^5.12.0",
