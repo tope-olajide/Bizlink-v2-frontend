@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Input, Button } from "mdbreact";
+/**
+ * Home - Renders the SignInForm form
+ *
+ * @class SignInForm
+ *
+ * @extends {Component}
+ */
 class SignInForm extends Component {
   render() {
     return (

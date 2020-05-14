@@ -5,11 +5,11 @@ import Footer from "../commons/Footer";
 import {
   fetchBusinessDetails,
   fetchBusinessReviews,
-  addBusinessReviews
+  addBusinessReviews,
 } from "../../actions/businessActions";
 import {
   removeFromFavourite,
-  addToFavourite
+  addToFavourite,
 } from "../../actions/favouriteActions";
 import { upvote, downvote } from "../../actions/voteAction";
 import { follow, unfollow } from "../../actions/followActions";
@@ -17,7 +17,14 @@ import LoadingAnimation from "../commons/LoadingAnimation";
 import { ToastContainer, toast } from "react-toastify";
 import { connect } from "react-redux";
 import NavigationBar from "../commons/NavigationBar";
-import ErrorPage from "../commons/ErrorPage";  
+import ErrorPage from "../commons/ErrorPage";
+/**
+ * Renders Business details
+ *
+ * @class BusinessDetails
+ *
+ * @extends {Component}
+ */
 export class BusinessDetails extends Component {
   constructor(props) {
     super(props);
@@ -30,138 +37,186 @@ export class BusinessDetails extends Component {
       isFavourite: "",
       followButton: "",
       spinnerIcon: "",
-      disableReviewButton: false
+      disableReviewButton: false,
     };
     this.reviewRef = React.createRef();
   }
-
+  /**
+   * @description Scrolls to comment box
+   *
+   * @memberof BusinessDetails
+   *
+   */
   scrollToReview = () => {
     window.scrollTo(0, this.reviewRef.current.offsetTop);
   };
   toggleReviewButton = () => {
     this.setState({ disableReviewButton: !this.state.disableReviewButton });
   };
+  /**
+   * @description - fetches business details
+   *
+   * immediately this component is mounted
+   *
+   * @memberof BusinessDetails
+   *
+   */
   componentDidMount() {
     const id = this.props.match.params.businessId;
     this.fetchBusinessDetails(id);
-    console.log(id)
+    console.log(id);
   }
-  setFavourite = favourite => {
+  setFavourite = (favourite) => {
     if (favourite) {
       this.setState({ favouriteIcon: "fas", isFavourite: true });
     } else {
       this.setState({ favouriteIcon: "far", isFavourite: false });
     }
   };
-  fetchBusinessDetails = id => {
+  /**
+   * @description fetches business details
+   *
+   * @memberof BusinessDetails
+   *
+   */
+  fetchBusinessDetails = (id) => {
     this.props
       .dispatch(fetchBusinessDetails(id))
       .then(() => {
         this.props.dispatch(fetchBusinessReviews(id)).then(() => {
           this.setState({
             isLoading: false,
-            isError: false
+            isError: false,
           });
           this.setFavourite(this.props.otherInfo.isUserFavourite);
         });
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState({
           isLoading: false,
-          isError: true
+          isError: true,
         });
         if (!error.response) {
           toast.error("Network Error!", {
-            position: "bottom-left"
+            position: "bottom-left",
           });
         } else {
           toast.error(error.response.data.message, {
-            position: "bottom-left"
+            position: "bottom-left",
           });
         }
       });
   };
+  /**
+   * @description Stores data into component's state
+   *
+   * @param {string} key - Key name for storing data in state
+   *
+   * @param {string} value - value to store in state
+   *
+   */
   saveToState = (key, value) => {
     this.setState({ [key]: value });
   };
+  /**
+   * @description saves user business review
+   *
+   * @memberof BusinessDetails
+   *
+   */
   addBusinessReviews = () => {
     this.toggleReviewButton();
     toast.info(` ...submitting your reviewing`, {
-      position: "bottom-left"
+      position: "bottom-left",
     });
     const id = this.props.match.params.businessId;
     this.props
       .dispatch(addBusinessReviews(id, this.state))
       .then(() => {
         toast.success(`Your review has been added successfully.`, {
-          position: "bottom-left"
+          position: "bottom-left",
         });
         this.toggleReviewButton();
         this.setState({ title: "", content: "" });
       })
-      .catch(error => {
+      .catch((error) => {
         if (!error.response) {
           toast.error("Network Error!", {
-            position: "bottom-left"
+            position: "bottom-left",
           });
         } else {
           toast.error(error.response.data.message, {
-            position: "bottom-left"
+            position: "bottom-left",
           });
           this.toggleReviewButton();
         }
       });
   };
+  /**
+   * @description follows or unfollows user
+   *
+   * @memberof BusinessDetails
+   *
+   */
   setFollow = () => {
     const userId = this.props.businessDetails.User.id;
     if (this.props.otherInfo.isFollowing) {
       this.props
         .dispatch(unfollow(userId))
         .then(() => {
-          
-          toast.success(`You successfully unfollowed ${
-            this.props.businessDetails.User.username
-          } `, {
-            position: "bottom-left"
-          });
+          toast.success(
+            `You successfully unfollowed ${this.props.businessDetails.User.username} `,
+            {
+              position: "bottom-left",
+            }
+          );
         })
-        .catch(error => {
+        .catch((error) => {
           if (!error.response) {
             toast.error("Network Error!", {
-            position: "bottom-left"
-          });
+              position: "bottom-left",
+            });
           } else {
             toast.error(error.response.data.message, {
-            position: "bottom-left"
-          });
+              position: "bottom-left",
+            });
           }
         });
     } else {
       this.props
         .dispatch(follow(userId))
         .then(() => {
-          toast.info(`You are now following ${this.props.businessDetails.User.username} `, {
-            position: "bottom-left"
-          });
+          toast.info(
+            `You are now following ${this.props.businessDetails.User.username} `,
+            {
+              position: "bottom-left",
+            }
+          );
         })
-        .catch(error => {
+        .catch((error) => {
           if (!error.response) {
             toast.error("Network Error!", {
-            position: "bottom-left"
-          });
+              position: "bottom-left",
+            });
           } else {
             toast.error(error.response.data.message, {
-            position: "bottom-left"
-          });
+              position: "bottom-left",
+            });
           }
         });
     }
   };
+  /**
+   * @description add business to user favourite
+   *
+   * @memberof BusinessDetails
+   *
+   */
   addToFavourite = () => {
     const id = this.props.match.params.businessId;
     this.setState({
       spinnerIcon: "spinner",
-      favouriteIcon: ""
+      favouriteIcon: "",
     });
     if (!this.props.otherInfo.isUserFavourite) {
       this.props
@@ -170,26 +225,28 @@ export class BusinessDetails extends Component {
           this.setState({
             favouriteIcon: "fas",
             isFavourite: true,
-            spinnerIcon: ""
+            spinnerIcon: "",
           });
-          
-          toast.success(`"${
-            this.props.businessDetails.businessName
-          }" has been successfully added to your Favourite`, {
-            position: "bottom-left"
-          });
+
+          toast.success(
+            `"${this.props.businessDetails.businessName}" has been successfully added to your Favourite`,
+            {
+              position: "bottom-left",
+            }
+          );
         })
-        .catch(error => {
+        .catch((error) => {
           if (!error.response) {
             toast.error("Network Error!", {
-            position: "bottom-left"
-          });
-          } else {
-            toast.error( `Unable to add "${
-              this.props.businessDetails.businessName
-            }" to your Favourite ${error}`, {
-              position: "bottom-left"
+              position: "bottom-left",
             });
+          } else {
+            toast.error(
+              `Unable to add "${this.props.businessDetails.businessName}" to your Favourite ${error}`,
+              {
+                position: "bottom-left",
+              }
+            );
             this.setState({ favouriteIcon: "far", spinnerIcon: "" });
           }
         });
@@ -200,90 +257,120 @@ export class BusinessDetails extends Component {
           this.setState({
             favouriteIcon: "far",
             isFavourite: false,
-            spinnerIcon: ""
+            spinnerIcon: "",
           });
-          toast.success(`"${
-            this.props.businessDetails.businessName
-          }" has been successfully removed from your Favourite`, {
-            position: "bottom-left"
-          });
+          toast.success(
+            `"${this.props.businessDetails.businessName}" has been successfully removed from your Favourite`,
+            {
+              position: "bottom-left",
+            }
+          );
         })
-        .catch(error => {
+        .catch((error) => {
           if (!error.response) {
             toast.error("Network Error!", {
-            position: "bottom-left"
-          });
-          } else {
-            
-            toast.error( `Unable to remove "${
-              this.props.businessDetails.businessName
-            }" from your Favourite`, {
-              position: "bottom-left"
+              position: "bottom-left",
             });
+          } else {
+            toast.error(
+              `Unable to remove "${this.props.businessDetails.businessName}" from your Favourite`,
+              {
+                position: "bottom-left",
+              }
+            );
             this.setState({ favouriteIcon: "fas", spinnerIcon: "" });
           }
         });
     }
   };
-
+  /**
+   * @description upvotes a business
+   *
+   * @memberof BusinessDetails
+   *
+   */
   upvoteBusiness = () => {
     const id = this.props.match.params.businessId;
     this.props
       .dispatch(upvote(id))
       .then(() => {
-        toast.success(`"${this.props.businessDetails.businessName}" Upvoted successfully`, {
-          position: "bottom-left"
-        });
+        toast.success(
+          `"${this.props.businessDetails.businessName}" Upvoted successfully`,
+          {
+            position: "bottom-left",
+          }
+        );
       })
-      .catch(error => {
+      .catch((error) => {
         if (!error.response) {
           toast.error("Network Error!", {
-            position: "bottom-left"
+            position: "bottom-left",
           });
         } else {
           toast.error(error.response.data.message, {
-            position: "bottom-left"
+            position: "bottom-left",
           });
         }
       });
   };
+  /**
+   * @description downvotes a business
+   *
+   * @memberof BusinessDetails
+   *
+   */
   downvoteBusiness = () => {
     const id = this.props.match.params.businessId;
     this.props
       .dispatch(downvote(id))
       .then(() => {
-        toast.success( `"${this.props.businessDetails.businessName}" Downvoted successfully`, {
-          position: "bottom-left"
-        })
+        toast.success(
+          `"${this.props.businessDetails.businessName}" Downvoted successfully`,
+          {
+            position: "bottom-left",
+          }
+        );
       })
-      .catch(error => {
+      .catch((error) => {
         if (!error.response) {
           toast.error("Network Error!", {
-            position: "bottom-left"
+            position: "bottom-left",
           });
         } else {
           toast.error(error.response.data.message, {
-            position: "bottom-left"
+            position: "bottom-left",
           });
         }
       });
   };
+  /**
+   * @description modifies a business
+   *
+   * @memberof BusinessDetails
+   *
+   */
   editBusiness = () => {
     const id = this.props.match.params.businessId;
-    window.location = `/modify-business/${id}`; 
+    window.location = `/modify-business/${id}`;
   };
+  /**
+   * @description fetches image galleries
+   *
+   * @memberof BusinessDetails
+   *
+   */
   fetchImageGallery = () => {
-    if (this.props.otherInfo.businessPictures.length ) {
-      console.log(this.props.otherInfo.businessPictures )
-      const imageGallery = this.props.otherInfo.businessPictures
+    if (this.props.otherInfo.businessPictures.length) {
+      console.log(this.props.otherInfo.businessPictures);
+      const imageGallery = this.props.otherInfo.businessPictures;
       return imageGallery;
     } else {
       return [
         {
           imageUrl:
             "https://res.cloudinary.com/temitope/image/upload/v1549260007/noimage_1.png",
-          imageId: 11
-        }
+          imageId: 11,
+        },
       ];
     }
   };
@@ -302,7 +389,6 @@ export class BusinessDetails extends Component {
       );
     }
     return (
-      
       <>
         <NavigationBar />
         <BusinessImageGallery
@@ -320,7 +406,7 @@ export class BusinessDetails extends Component {
           editBusiness={this.editBusiness}
           businessImageUrl={this.fetchImageGallery()}
           scrollToReview={this.scrollToReview}
-          id = {this.props.match.params.businessId}
+          id={this.props.match.params.businessId}
         />
         <BusinessDetailsPage
           saveToState={this.saveToState}
@@ -348,20 +434,19 @@ export class BusinessDetails extends Component {
           followButton={this.state.followButton}
           reviewRef={this.reviewRef}
           isFollowing={this.props.otherInfo.isFollowing}
-         
         />
-       <ToastContainer />
+        <ToastContainer />
         <Footer />
       </>
     );
   }
 }
-const mapStateToProps = state => {
-  console.log(state.business)
+const mapStateToProps = (state) => {
+  console.log(state.business);
   return {
     businessDetails: state.business.businessDetails.business,
     otherInfo: state.business.businessDetails.otherInfo,
-    businessReview: state.review.reviews||[]
+    businessReview: state.review.reviews || [],
   };
 };
 export default connect(mapStateToProps)(BusinessDetails);

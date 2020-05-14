@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import { Button } from "mdbreact";
+/**
+ * Renders Business-list hero image with search-business form
+ *
+ * @class CataloguePageHeader
+ *
+ * @extends {Component}
+ */
 class CataloguePageHeader extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +18,12 @@ class CataloguePageHeader extends Component {
   saveToState(key, value) {
     this.setState({ [key]: value });
   }
+    /**
+   * @description handles business search
+   *
+   * @memberof CataloguePageHeader
+   *
+   */
   handleBusinessSearch = () => {
     window.location = `/businesses/search/name=${
       this.state.businessName

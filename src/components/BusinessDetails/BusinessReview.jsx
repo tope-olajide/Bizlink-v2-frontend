@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import Image from "react-graceful-image";
+/**
+ * BusinessReview 
+ *
+ * @class BusinessDetailsPage
+ *
+ * @extends {Component}
+ */
 class BusinessReview extends Component {
   render() {
     return (

@@ -3,6 +3,13 @@ import { Input, Button } from "mdbreact";
 import Image from "react-graceful-image";
 import BusinessReview from "./BusinessReview";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+/**
+ * BusinessDetailsPage - business description
+ *
+ * @class BusinessDetailsPage
+ *
+ * @extends {Component}
+ */
 class BusinessDetailsPage extends Component {
   render() {
     return (
@@ -18,10 +25,11 @@ class BusinessDetailsPage extends Component {
                 <strong>
                   <h4 className="text-center">
                     {" "}
-                    {this.props.reviewLength} {(this.props.reviewLength>=1)?"Reviews":"Review"}
+                    {this.props.reviewLength}{" "}
+                    {this.props.reviewLength >= 1 ? "Reviews" : "Review"}
                   </h4>
                 </strong>
-                {this.props.reviews.map(review => {
+                {this.props.reviews.map((review) => {
                   return (
                     <BusinessReview
                       commenterImageUrl={review.User.ImageUrl}
@@ -33,20 +41,17 @@ class BusinessDetailsPage extends Component {
                 })}
                 <div className="mt-5" />
               </div>
-              <div
-                className="card shadow-sm p-5 mt-3 mb-2"
-                
-              >
+              <div className="card shadow-sm p-5 mt-3 mb-2">
                 <h4 className=" light-color light-text text-center px-3 mb-5">
                   <strong>Write a Review</strong>
                 </h4>
-                <form>
-                  <div ref={this.props.reviewRef} className="grey-text">
+                <form ref={this.props.reviewRef}>
+                  <div className="grey-text">
                     <Input
                       label="Title"
                       icon="pencil"
                       default={this.props.title}
-                      onChange={event => {
+                      onChange={(event) => {
                         this.props.saveToState("title", event.target.value);
                       }}
                       value={this.props.title}
@@ -57,7 +62,7 @@ class BusinessDetailsPage extends Component {
                       icon="pencil"
                       rows="3"
                       default={this.props.content}
-                      onChange={event => {
+                      onChange={(event) => {
                         this.props.saveToState("content", event.target.value);
                       }}
                       value={this.props.content}
@@ -69,7 +74,9 @@ class BusinessDetailsPage extends Component {
                       disabled={this.props.disableReviewButton}
                       className={"submit-review-button"}
                     >
-  {this.props.disableReviewButton?'Submitting...':'Submit Review'}
+                      {this.props.disableReviewButton
+                        ? "Submitting..."
+                        : "Submit Review"}
                     </Button>
                   </div>
                 </form>
@@ -167,7 +174,7 @@ class BusinessDetailsPage extends Component {
                     <Button
                       disabled={this.props.isBusinessOwner}
                       onClick={this.props.setFollow}
-                      className={'follow-button'}
+                      className={"follow-button"}
                     >
                       {this.props.isFollowing ? "Unfollow" : "follow"}
                     </Button>

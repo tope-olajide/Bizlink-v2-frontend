@@ -42,7 +42,7 @@ transform: translate(-50%, -50%);
         ),
         url("images/Lagos-skyline.jpg");
       background-size: cover;
-      background-position: top;
+      background-position: center;
       position: relative;
       background-clip: padding-box;
       background-color: #f4f9ff;
