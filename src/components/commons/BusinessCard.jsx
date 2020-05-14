@@ -8,11 +8,11 @@ class CataloguePage extends Component {
       <>
         <div
           className={
-            this.props.isProfilepage ? "col-md-6" : "col-sm-6 col-md-4 "
+            this.props.isProfilepage ? "card-item col-md-6" : "card-item"
           }
-        >
+        ><div className=" card mb-5 ml-0 mr-0  ">
           <Link to={`/business-details/${this.props.id}`}>
-            <div className="card flex-fill mb-5 ml-0 mr-0  ">
+            
               <Image
                 className="card-img"
                 src={this.props.image}
@@ -24,8 +24,11 @@ class CataloguePage extends Component {
                   <p className="category ">{this.props.category}</p>{" "}
                   <p className="mx-1">
                     <b>•</b>
-                  </p>{" "}
-                  <p className="review">{this.props.reviewCount} {(this.props.reviewCount>0)?"Reviews":"Review"}</p>
+                  </p>
+                  <p className="review">
+                    {this.props.reviewCount}{" "}
+                    {this.props.reviewCount > 1 ? "Reviews" : "Review"}
+                  </p>
                 </div>
                 <ul>
                   <li>
@@ -78,10 +81,10 @@ class CataloguePage extends Component {
                   <p>View Business</p>
                 </div>
               </div>
-            </div>
-          </Link>
+           </Link> </div>
+          
         </div>
-      </>
+    </>
     );
   }
 }

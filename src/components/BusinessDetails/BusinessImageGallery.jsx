@@ -4,9 +4,16 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import { Button } from "mdbreact";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink as Link } from 'react-router-dom';
-
+/**
+ * BusinessImageGallery - image gallery component
+ *
+ * @class BusinessDetailsPage
+ *
+ * @extends {Component}
+ */
 class BusinessImageGallery extends Component {
   render() {
+    //Adds cloudinary image transformations to image url
     const addTransformationToUrl = url => {
       const orignalTransformations = "w_1150,h_420,c_fit,c_pad,b_black/";
       const thumbTransformations = "w_350,h_250/";

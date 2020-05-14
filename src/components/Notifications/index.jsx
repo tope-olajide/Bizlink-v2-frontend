@@ -133,14 +133,14 @@ else{
   }}
 }
 const mapStateToProps = state => {
-  console.log(state)
+  console.log(state.notifications)
   return {
     newNotifications:
-      state.notifications.unreadNotification.unreadNotifications||[],
+      state.notifications.unreadNotification.unreadNotifications,
     allNotificationsCount:
-      state.notifications.unreadNotification.allNotificationsCount||0,
+      state.notifications.unreadNotification.allNotificationsCount,
     readNotificationsCount:
-      state.notifications.unreadNotification.readNotificationsCount||0
+      state.notifications.unreadNotification.readNotificationsCount
   };
 };
 export default connect(mapStateToProps)(Notifications);

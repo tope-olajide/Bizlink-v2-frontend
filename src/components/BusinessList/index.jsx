@@ -78,19 +78,17 @@ class BusinessList extends Component {
     } else {
       return (
         <>
-          <NavigationBar homePage="active" scrollToMyRef={this.scrollToMyRef} />
+          <NavigationBar  scrollToMyRef={this.scrollToMyRef} />
           <BusinessListHeader />
           <div>
             <h1 className="text-center my-5 featured-text">
               <FontAwesomeIcon icon="briefcase" /> Featured Places
             </h1>
           </div>
-          <div className="container">
-            <div className="row">
               {!this.props.allBusinesses.length ? (
                 <div>No Businesses Found!</div>
-              ) : (
-                this.props.allBusinesses.map(business => {
+              ) : (<div className=" container card-container"> 
+                { this.props.allBusinesses.map(business => {
                   return (
                     <>
                       <BusinessCard
@@ -109,9 +107,9 @@ class BusinessList extends Component {
                       />
                     </>
                   );
-                })
-              )}
-            </div>
+                })}
+              </div>)}
+            
             <div className="">
               <Pagination
                 activePage={this.state.activePage}
@@ -127,7 +125,6 @@ class BusinessList extends Component {
                 activeClass={"active"}
               />
             </div>
-          </div>
           <Footer myRef={this.myRef} />
           <ToastContainer />
         </>

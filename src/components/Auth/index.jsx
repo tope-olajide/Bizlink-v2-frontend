@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import HomePage from "./HomeAnimation";
 import AuthNavBar from './AuthNavBar';
-
+/**
+ * Home - Renders Auth Navigation bar and homepage
+ *
+ * @class Home
+ *
+ * @extends {Component}
+ */
 class Home extends Component {
 
   render() {
