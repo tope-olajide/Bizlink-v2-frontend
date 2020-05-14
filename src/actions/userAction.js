@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
 FETCH_USERS_PROFILE
   } from './type';
-  const url = 'http://127.0.0.1:5000/api/user/'
+  const url = 'https://bislink.herokuapp.com/api/user/'
 
 export function fetchUsersProfile() {
     return dispatch => axios.get(`${url}profile`)

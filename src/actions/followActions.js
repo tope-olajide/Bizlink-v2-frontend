@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { FOLLOW_USER, UNFOLLOW_USER } from "./type";
-const url = "http://127.0.0.1:5000/api/user/follow";
+const url = "https://bislink.herokuapp.com/api/user/follow";
 export function follow(userId) {
   return dispatch =>
     axios.post(`${url}/${userId}`).then(response => {

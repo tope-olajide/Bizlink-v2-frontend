@@ -5,7 +5,7 @@ import {
   ALL_NOTIFICATIONS,
   READ_NOTIFICATIONS,NEW_NOTIFICATIONS_COUNT,MARK_ALL_NOTIFICATIONS
 } from "../actions/type";
-const url = "http://127.0.0.1:5000/api/user/notifications";
+const url = "https://bislink.herokuapp.com/api/user/notifications";
 
 export function fetchAllNewNotifications() {
   return dispatch =>

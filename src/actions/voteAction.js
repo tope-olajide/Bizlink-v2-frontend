@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { UPVOTE_BUSINESS, DOWNVOTE_BUSINESS } from "./type";
-const url = "http://127.0.0.1:5000/api/business";
+const url = "https://bislink.herokuapp.com/api/business";
 
 export function upvote(businessId) {
   return dispatch =>
