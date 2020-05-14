@@ -2,7 +2,7 @@ import axios from "axios";
 import jsonwebtoken from "jsonwebtoken";
 import { SET_CURRENT_USER } from "./type";
 
-const url = "http://127.0.0.1:5000/api/user/";
+const url = "https://bislink.herokuapp.com/api/user/";
 
 export function setCurrentUser(userData) {
   return {
