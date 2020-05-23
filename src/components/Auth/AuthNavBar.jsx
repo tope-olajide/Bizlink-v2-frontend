@@ -86,7 +86,7 @@ export class AuthNavBar extends Component {
       });
       this.props.signUp(this.state).then(
         () => {
-          toast.success(`Welcome <br/><em>${this.state.username}</em>`, {
+          toast.success(`Welcome ${this.state.username}`, {
             position: "bottom-left",
           });
           setTimeout(() => {
@@ -124,7 +124,7 @@ export class AuthNavBar extends Component {
     this.props.signIn(this.state).then(
       () => {
         toast.success(
-          `Welcome back <br/><em>${this.state.usernameOrEmail}</em>`,
+          `Welcome back ${this.state.usernameOrEmail}`,
           {
             position: "bottom-left",
           }

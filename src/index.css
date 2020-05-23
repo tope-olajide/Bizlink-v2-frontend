@@ -322,6 +322,10 @@ font-size: 1.5rem;
         padding: 10px;
       }
     }
+    @media screen and (max-width: 500px) {
+      .biz-form-container {
+        width: 100%;
+      }}
     .hide-gallery-button {
       visibility: hidden;
     }

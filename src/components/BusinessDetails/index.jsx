@@ -12,6 +12,7 @@ import {
   addToFavourite,
 } from "../../actions/favouriteActions";
 import { upvote, downvote } from "../../actions/voteAction";
+import { deleteBusiness } from "../../actions/businessActions";
 import { follow, unfollow } from "../../actions/followActions";
 import LoadingAnimation from "../commons/LoadingAnimation";
 import { ToastContainer, toast } from "react-toastify";
@@ -140,6 +141,7 @@ export class BusinessDetails extends Component {
         this.setState({ title: "", content: "" });
       })
       .catch((error) => {
+        this.toggleReviewButton();
         if (!error.response) {
           toast.error("Network Error!", {
             position: "bottom-left",
@@ -148,7 +150,7 @@ export class BusinessDetails extends Component {
           toast.error(error.response.data.message, {
             position: "bottom-left",
           });
-          this.toggleReviewButton();
+          
         }
       });
   };
@@ -349,6 +351,43 @@ export class BusinessDetails extends Component {
    * @memberof BusinessDetails
    *
    */
+
+    /**
+   * @description delete a business
+   *
+   * @memberof BusinessDetails
+   *
+   */
+  deleteBusiness = () => {
+    const id = this.props.match.params.businessId;
+    toast.info("Removing business...", {
+      position: "bottom-left",
+    });
+    this.props
+      .dispatch(deleteBusiness(id))
+      .then(() => {
+        toast.success(
+          `"${this.props.businessDetails.businessName}" business removed successfully`,
+          {
+            position: "bottom-left",
+          }
+        );
+        setTimeout(() => {
+          window.location = "/";
+        }, 3000);
+      })
+      .catch((error) => {
+        if (!error.response) {
+          toast.error("Network Error!", {
+            position: "bottom-left",
+          });
+        } else {
+          toast.error(error.response.data.message, {
+            position: "bottom-left",
+          });
+        }
+      });
+  };
   editBusiness = () => {
     const id = this.props.match.params.businessId;
     window.location = `/modify-business/${id}`;
@@ -407,6 +446,7 @@ export class BusinessDetails extends Component {
           businessImageUrl={this.fetchImageGallery()}
           scrollToReview={this.scrollToReview}
           id={this.props.match.params.businessId}
+          deleteBusiness={this.deleteBusiness}
         />
         <BusinessDetailsPage
           saveToState={this.saveToState}
