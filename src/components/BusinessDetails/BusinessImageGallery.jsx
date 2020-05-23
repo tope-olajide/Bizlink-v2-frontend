@@ -81,7 +81,7 @@ class BusinessImageGallery extends Component {
                 <FontAwesomeIcon icon={["far", "eye"]} size="2x" />{" "}
                 {this.props.viewCount}
               </Button>
-              <Button disabled={!this.props.isBusinessOwner}>
+              <Button onClick={this.props.deleteBusiness} disabled={!this.props.isBusinessOwner}>
                 <FontAwesomeIcon icon="trash" size="2x" />
               </Button>
               <Link to={`/modify-business/${this.props.id}`}>

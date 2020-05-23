@@ -10,10 +10,12 @@ class AuthenticateUser extends Component {
 const decoded = jsonwebtoken.decode(token);
         
         if (!token || !decoded) {
-          this.props.signOut();
+          localStorage.removeItem('token');
+          window.location = '/auth';
         } 
         if (decoded.exp < new Date().getTime() / 1000 ) {
-          this.props.signOut();
+          localStorage.removeItem('token');
+          window.location = '/auth';
         }
       }
       render() {

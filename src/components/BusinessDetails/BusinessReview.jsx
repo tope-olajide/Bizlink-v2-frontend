@@ -22,7 +22,7 @@ class BusinessReview extends Component {
             <br />
             <p className="">{this.props.commenterUsername}</p>
           </div>
-          <div className=" col-md-9">
+          <div className=" col-md-9 ">
             <h5 className="text-left">{this.props.reviewTitle}</h5>
             <p className="text-left">{this.props.reviewContent}</p>
           </div>

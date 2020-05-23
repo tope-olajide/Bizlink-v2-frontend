@@ -6,13 +6,11 @@ import NavBar from "../commons/NavigationBar";
 import Footer from "../commons/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import { connect } from "react-redux";
-import ErrorPage from "../commons/ErrorPage";
 class BusinessList extends Component {
   constructor() {
     super();
     this.state = {
       isLoading: true,
-      isError: false,
       businessName: "",
       tagline: "",
       businessAddress: "",
@@ -28,12 +26,9 @@ class BusinessList extends Component {
       imageUploadError: false,
       imageId: "",
       isSavingBusiness: false,
-      UploadBottonLabel: "Register Business",
-      loadingIcon: ""
     };
-    this.onDrop = this.onDrop.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
   }
+  
   disableLoading = () => {
     this.setState({
       isSavingBusiness: false
@@ -44,7 +39,7 @@ class BusinessList extends Component {
       isSavingBusiness: true
     });
   };
-  onDrop(files) {
+  onDrop=(files)=> {
     this.setState({
       filesToBeSent: files,
       files: files.map(file => ({
@@ -53,19 +48,20 @@ class BusinessList extends Component {
       }))
     });
   }
-  handleInputChange(key, value) {
+  handleInputChange= (key, value) => {
     this.setState({ [key]: value });
   }
   handleFormSubmit = files => {
-    if (this.state.filesToBeSent.length >= 1) {
-      // start loading animation
+    if (this.state.filesToBeSent.length) {
+
+      
+      // Push all the axios request promise into a single array
+      const uploaders = this.state.filesToBeSent.map(async file => {
+              // start loading animation
       this.enableLoading();
       toast.info(`uploading pictures...`, {
         position: "bottom-left"
       });
-      
-      // Push all the axios request promise into a single array
-      const uploaders = this.state.filesToBeSent.map(async file => {
         // Initial FormData
         const formData = new FormData();
         formData.append("upload_preset", "sijxpjkn");
@@ -96,10 +92,10 @@ class BusinessList extends Component {
               ...prevState.businessImageArray,
               { imageUrl: secure_url, imageId: public_id }
             ]
-          }));
+          }));/* 
           toast.success(`${file} uploaded successfully!`, {
             position: "bottom-left"
-          });
+          }); */
         }
         catch (err) {
           toast.error(`${err}`, {
@@ -142,6 +138,10 @@ class BusinessList extends Component {
         });
       this.disableLoading();
     } else {
+      toast.info('saving...',{
+        position: "bottom-left"
+      }
+    )
       const {
         businessName,
         tagline,
@@ -151,12 +151,8 @@ class BusinessList extends Component {
         category,
         businessDescription
       } = this.state;
-      this.setState({
-        isSavingBusiness: true
-      });
-      toast.info('saving...', {
-        position: "bottom-left"
-      })
+      
+      this.enableLoading () ;
       this.props
         .dispatch(
           addBusiness({
@@ -176,25 +172,25 @@ class BusinessList extends Component {
           })
           this.disableLoading();
         })
-        .catch(err => {
-          toast.error(` ${err.response.data.message}`, {
-            position: "bottom-left"
-          })
+        .catch((error) => {
           this.setState({ isSavingBusiness: false });
+          if (!error.response) {
+            toast.error("Network Error!", {
+              position: "bottom-left",
+            });
+          } else {
+            toast.error(error.response.data.message, {
+              position: "bottom-left",
+            });
+            
+          }
         });
     }
   };
   render() {
-    if (this.state.isError) {
-      return (
-        <>
-          <ErrorPage />
-        </>
-      );
-    }
     return (
-      <div>
-        <NavBar addBusiness="active" />
+      <>
+        <NavBar /><ToastContainer />
         <BusinessForm
           files={this.state}
           onDrop={this.onDrop}
@@ -205,9 +201,10 @@ class BusinessList extends Component {
           showModifyGalleryButton={false}
           title={"Business Registration Form"}
         />
-        <ToastContainer />
+        
         <Footer />
-      </div>
+        
+      </>
     );
   }
 }
