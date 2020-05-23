@@ -76,6 +76,12 @@ export function modifyBusiness(businessData, businessId) {
     });
 }
 
+export function deleteBusiness(businessId) {
+  return dispatch =>
+    axios.delete(`${url}/${businessId}`).then(response => {
+    });
+}
+
 export function businessSearch(name, location, page, limit) {
   return dispatch =>
     axios
