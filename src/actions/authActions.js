@@ -1,8 +1,8 @@
 import axios from "axios";
 import jsonwebtoken from "jsonwebtoken";
 import { SET_CURRENT_USER } from "./type";
-
-const url = "https://bislink.herokuapp.com/api/user/";
+import baseUrl from '../utils/baseUrl'
+const url = "baseUrl/api/user/";
 
 export function setCurrentUser(userData) {
   return {

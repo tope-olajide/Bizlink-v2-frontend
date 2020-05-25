@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { ADD_TO_FAVOURITE, REMOVE_FROM_FAVOURITE } from "./type";
-const url = "https://bislink.herokuapp.com/api/user/favourite";
+const url = "baseUrl/api/user/favourite";
 const token = localStorage.getItem("token");
 axios.defaults.headers.common["authorization"] = token;
 

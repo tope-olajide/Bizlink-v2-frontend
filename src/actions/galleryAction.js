@@ -5,7 +5,7 @@ import {
   DEFAULT_BUSINESS_IMAGE,
   DELETE_PICTURE
 } from "./type";
-const url = "https://bislink.herokuapp.com/api/business";
+const url = "baseUrl/api/business";
 
 export function setDefaultImage(businessId, businessImageUrl) {
   return dispatch =>

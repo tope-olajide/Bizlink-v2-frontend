@@ -1,68 +1,105 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Bizlink
 
-## Available Scripts
+Bizlink is a full stack web app that provides a platform that brings businesses and individuals together.
+Users can post their business on Bizlink and get feedback in form of reviews and votes from other users. [The back-end repo is here](https://github.com/tope-olajide/Bizlink-v2-backend)
 
-In the project directory, you can run:
+## Hosted Application
 
-### `npm start`
+**Front-end** https://bizlink.now.sh/
+**Back-end** https://bislink.herokuapp.com/
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. Get the backend running first, to do that, clone this repo:
 
-### `npm test`
+   ```
+   git clone https://github.com/tope-olajide/Bizlink-v2-backend.git
+   cd Bizlink-v2-backend.git
+   ```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   Then follow the instructions [here](https://github.com/tope-olajide/Bizlink-v2-backend#readme) to get the backend server up and running. After that:
 
-### `npm run build`
+1. Install [`node`](https://nodejs.org/en/download/), version 12 or greater
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3) Clone this repo and cd into it
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+   ```
+   git clone https://github.com/tope-olajide/Bizlink-v2-frontend.git
+   cd Bizlink-v2-frontend
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4) Install all dependencies
 
-### `npm run eject`
+   ```
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+5) navigate to `src/utils/baseUrl.js` and change the baseUrl from 'https://bislink.herokuapp.com' to 'http://localhost:5000'`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+6) Start the app
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   ```
+   npm start
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+7) Once the server is running, Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Learn More
+## Features
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Create an account with fulname, username, email and password.
+2. Sign in with username or email and password
+3. Create a Business
+4. Modify a business
+5. View business details
+6. Search for a business
+7. Post reviews on businesses
+8. Add business and remove business from favourite
+9. Upvote or downvote business
+10. View/edit user profile
+11. Follow another user
+12. User get in app notifications when:
+- they Registered for the first time
+- their business get upvoted or downvoted.
+- their businesses get reviewed.
+- they are followed or unfollowed by another user.
+- their business get added to another user's favourite.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Built With
 
-### Code Splitting
+- [NodeJS](https://nodejs.org/en/) - A Javascript runtime built on chrome V8 engine that uses an event-driven non-blocking I/O model that makes it lightweight and efficient.
+- [React Bootstrap with Material Design](https://mdbootstrap.com/docs/react/) - MDBootstrap - world's most popular Material Design framework for building responsive, mobile-first websites & apps.
+- [React](https://www.reactjs.org/) - A JavaScript library for building user interfaces by Facebook.
+- [Redux](http://redux.js.org/) - A predictable state container for JavaScript apps.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## License
 
-### Analyzing the Bundle Size
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Contributing
+If you are interested in contributing to development of this project, follow the instructions below to contribute.
 
-### Making a Progressive Web App
+* Fork the repository
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+* Make your change
 
-### Advanced Configuration
+* Commit your change to your forked repository
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+* Provide a detailed commit description
 
-### Deployment
+* Raise a pull request against the master branch
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+#### Can I clone this application for personal use?
 
-### `npm run build` fails to minify
+    Yes!. This application is licensed under MIT, and it's open for
+    everybody
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Author
+
+- **Temitope David Olajide** - Fullstack Developer.
+
+## Acknowledgments
+
+- MDBootstrap
+- ReactJS
+- ReduxJS
+- Cloudinary
