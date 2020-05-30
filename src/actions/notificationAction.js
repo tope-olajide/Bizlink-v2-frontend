@@ -5,7 +5,8 @@ import {
   ALL_NOTIFICATIONS,
   READ_NOTIFICATIONS,NEW_NOTIFICATIONS_COUNT,MARK_ALL_NOTIFICATIONS
 } from "../actions/type";
-const url = "baseUrl/api/user/notifications";
+import baseUrl from '../utils/baseUrl'
+const url = `${baseUrl}/api/user/notifications`;
 
 export function fetchAllNewNotifications() {
   return dispatch =>
