@@ -2,7 +2,7 @@ import axios from "axios";
 import jsonwebtoken from "jsonwebtoken";
 import { SET_CURRENT_USER } from "./type";
 import baseUrl from '../utils/baseUrl'
-const url = "baseUrl/api/user/";
+const url = `${baseUrl}/api/user/`;
 
 export function setCurrentUser(userData) {
   return {

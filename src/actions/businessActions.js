@@ -2,7 +2,8 @@ import axios from "axios";
 import {
  FETCH_ALL_BUSINESSES, ADD_BUSINESS, SET_BUSINESS_DETAILS, FETCH_BUSINESS_REVIEWS, ADD_BUSINESS_REVIEW, MODIFY_BUSINESS
 } from "../actions/type";
-const url = "baseUrl/api/business";
+import baseUrl from '../utils/baseUrl'
+const url = `${baseUrl}/api/business`;
 const token = localStorage.getItem("token");
 
 axios.interceptors.request.use(function (config) {

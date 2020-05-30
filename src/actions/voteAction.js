@@ -1,7 +1,8 @@
 import axios from "axios";
 
 import { UPVOTE_BUSINESS, DOWNVOTE_BUSINESS } from "./type";
-const url = "baseUrl/api/business";
+import baseUrl from '../utils/baseUrl';
+const url = `${baseUrl}/api/business`;
 
 export function upvote(businessId) {
   return dispatch =>

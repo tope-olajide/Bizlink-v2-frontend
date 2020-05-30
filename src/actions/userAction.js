@@ -3,7 +3,9 @@ import axios from 'axios';
 import {
 FETCH_USERS_PROFILE
   } from './type';
-  const url = 'baseUrl/api/user/'
+  import baseUrl from '../utils/baseUrl'
+  
+  const url = `${baseUrl}/api/user/`
 
 export function fetchUsersProfile() {
     return dispatch => axios.get(`${url}profile`)

@@ -5,7 +5,8 @@ import {
   DEFAULT_BUSINESS_IMAGE,
   DELETE_PICTURE
 } from "./type";
-const url = "baseUrl/api/business";
+import baseUrl from '../utils/baseUrl'
+const url = `${baseUrl}/api/business`;
 
 export function setDefaultImage(businessId, businessImageUrl) {
   return dispatch =>

@@ -1,7 +1,8 @@
 import axios from "axios";
 
 import { ADD_TO_FAVOURITE, REMOVE_FROM_FAVOURITE } from "./type";
-const url = "baseUrl/api/user/favourite";
+import baseUrl from '../utils/baseUrl'
+const url = `${baseUrl}/api/user/favourite`;
 const token = localStorage.getItem("token");
 axios.defaults.headers.common["authorization"] = token;
 

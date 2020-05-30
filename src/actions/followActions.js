@@ -1,7 +1,8 @@
 import axios from "axios";
 
 import { FOLLOW_USER, UNFOLLOW_USER } from "./type";
-const url = "baseUrl/api/user/follow";
+import baseUrl from '../utils/baseUrl'
+const url = `${baseUrl}/api/user/follow`;
 export function follow(userId) {
   return dispatch =>
     axios.post(`${url}/${userId}`).then(response => {
