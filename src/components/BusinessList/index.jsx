@@ -110,7 +110,7 @@ class BusinessList extends Component {
                 })}
               </div>)}
             
-            <div className="">
+            <div className="center">
               <Pagination
                 activePage={this.state.activePage}
                 itemsCountPerPage={9}

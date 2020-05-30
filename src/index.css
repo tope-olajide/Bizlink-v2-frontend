@@ -112,6 +112,10 @@ align-items: center;
       color: rgb(153, 144, 144);
       text-decoration: underline;
     }
+    .pagination {
+      margin: auto auto;
+      width: 320px
+    }
     .featured-text {
       font-size: 2.9em;
     }

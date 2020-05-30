@@ -337,15 +337,20 @@
 	opacity: 1;
 }
 @media screen and (max-width: 1140px) { 
-	.cb-slideshow li div h3 { font-size: 50px;line-height: 35px; }
+	.cb-slideshow li div h3 { font-size: 40px;line-height: 38px; }
 	
 }
 
-@media screen and (max-width: 600px) { 
+@media screen and (max-width: 720px) { 
 	.cb-slideshow li div h3 {
 		font-size: 35px;
+		max-width: 90%;
+		line-height: 36px;
+	}
+}
+@media screen and (max-width: 400px) { 
+	.cb-slideshow li div h3 {
 		max-width: 100%;
-		line-height: 26px;
 	}
 }
 u {

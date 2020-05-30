@@ -173,12 +173,12 @@ export class AuthNavBar extends Component {
           <MDBCollapse isOpen={this.state.collapse} navbar>
             <MDBNavbarNav right>
               <Link to="#" onClick={() => this.toggle(7)}>
-                <FontAwesomeIcon className="white-text" icon="user-plus" />{" "}
-                <h6 className="white-text d-inline mr-4">SIGN UP</h6>
+                 <div className=" py-1 my-1 mr-4"><FontAwesomeIcon className="white-text" icon="user-plus" />{" "}
+               <h6 className="white-text d-inline ml-2">SIGN UP</h6></div>
               </Link>
               <Link to="#" onClick={() => this.toggle(6)}>
-                <FontAwesomeIcon className="white-text" icon="sign-in-alt" />{" "}
-                <h6 className="white-text d-inline">LOGIN</h6>{" "}
+                <div className=" py-1 my-1 mr-4"><FontAwesomeIcon className="white-text" icon="sign-in-alt" />{" "}
+                <h6 className="white-text d-inline ml-2">LOGIN</h6>{" "}</div>
               </Link>
             </MDBNavbarNav>
           </MDBCollapse>
